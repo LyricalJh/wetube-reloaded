@@ -1,17 +1,23 @@
 extends base.pug
 
-block content 
-    if errorMessage
-        span=errorMessage
-    form(method="POST")
-        input(placeholder="Name", name="name", type="text", required)
-        input(placeholder="Email", name="email", type="email", required)
-        input(placeholder="Username", name="username", type="text", required)
-        input(placeholder="Password", name="password", type="password", required)
-        input(placeholder="Confirm Password", name="password2", type="password", required)
-        input(placeholder="Location", name="location", type="text", required)
-        input(type="submit", value="Join")
-    hr
-    div     
-        span Already have an account? 
-            a(href="/login") Log in now &rarr;
+block content
+    main
+        div.join__container
+            a(href="/").tube__logo
+                i.fab.fa-youtube
+            h3 Wetube    
+            if errorMessage
+                span=errorMessage
+            div.join__title 회원가입    
+            form(method="POST").join__form
+                input(placeholder="Name", name="name", type="text", required).join__input
+                input(placeholder="Email", name="email", type="email", required).join__input
+                input(placeholder="Username", name="username", type="text", required).join__input
+                input(placeholder="Password", name="password", type="password", required).join__input
+                input(placeholder="Confirm Password", name="password2", type="password", required).join__input
+                input(placeholder="Location", name="location", type="text", required).join__input
+                input(type="submit", value="가입하기").join__btn
+            
+            div.ask__join     
+                span 이미 계정이 있으신가요?  
+                a(href="/login") 로그인 하기 &rarr;

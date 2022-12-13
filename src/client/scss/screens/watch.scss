@@ -1,0 +1,76 @@
+
+    .video-screen {
+        width: 90%;
+        height: 400px;
+        object-fit: fill;
+        
+    }
+.video__container {
+    margin: 15px 0px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.video__container small{
+    margin-top: 10px;
+    font-size: 23px;
+    font-weight: 600;
+}
+.video__owner {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative; 
+    .video__delete-btn {
+        position: absolute;
+        right: 10px;
+        background-color: $red;
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,0.8);
+        padding: 10px;
+    }
+    .video__edit-btn {
+        position: absolute;
+        right: 150px;
+        background-color: black;
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,0.8);
+        padding: 10px;
+    }
+    
+}
+.video__owner img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.video__des{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 13px;
+}
+
+.video__des span :first-child{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.video__des span {
+    margin: 5px 0px;
+}
+
+.video__sub {
+    background-color: gray;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.video__sub h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}

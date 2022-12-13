@@ -1,15 +1,25 @@
 extends base.pug
 
-block content 
-    if errorMessage
-        span=errorMessage
-    form(method="POST")
-        input(placeholder="Username", name="username", type="text", required)
-        input(placeholder="Password", name="password", type="password", required)
-        input(type="submit", value="Join")
-        br
-        a(href="/users/github/start") Continue with Github &rarr;
-    hr
-    div     
-        span Don't have an account? 
-            a(href="/join") Create Now &rarr;
+
+block content
+    main.login__main
+        a(href="/")
+            i.fab.fa-youtube
+        h3 Wetube
+        div.login__container
+            if errorMessage
+                span=errorMessage
+                
+            form(method="POST").login__form
+                input(placeholder="Username", name="username", type="text", required).login__input
+                input(placeholder="Password", name="password", type="password", required).login__input
+                input(type="submit", value="로그인").join__btn
+                br
+                span.git_span
+                    a(href="/users/github/start").git 깃허브으로 로그인
+                span
+                    a(href="/users/kakao/start").kakao 카카오톡으로 로그인
+            hr
+            div     
+                span.create__span 계정이 없으신가요?   
+                    a(href="/join").create__btn 계정 생성하기 &rarr;

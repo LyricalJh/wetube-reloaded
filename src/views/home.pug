@@ -1,13 +1,9 @@
 extends base.pug
 include mixins/video
 
-block content 
-    h2 hello 
-        nav
-            ul 
-                li
-                    a(href="/videos/upload") Upload Video
+block content
+    div.video-grid
         each video in videos 
             +video(video)
         else 
-            li Sorry Nothing found
+            span.empty_message No video found

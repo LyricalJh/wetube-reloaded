@@ -1,0 +1,28 @@
+.img__layout {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    img {
+        border-radius: 10px;
+        margin: 10px 10px;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .img__descriptions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .img__descriptions :first-child {
+        font-size: 32px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        
+    }
+    .img__descriptions :last-child {
+        margin-top: 5px;
+    }
+    
+    
+}
