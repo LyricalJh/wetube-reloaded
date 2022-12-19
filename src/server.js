@@ -1,13 +1,14 @@
 import express from "express";
 import morgan from "morgan";
 import rootRouter from "./routers/rootRouter";
-import flash from "express-flash";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { localMiddleware } from "./middleware";
 import apiRouter from "./routers/apiRouter";
+import flash from "express-flash";
+
 
 
 const app = express();
@@ -18,6 +19,7 @@ app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
 
 app.use(
     session({
@@ -33,6 +35,7 @@ app.use((req, res, next) => {
     res.header("Cross-Origin-Opener-Policy", "same-origin");
     next();
   });
+  
 app.use(flash());
 app.use(localMiddleware);
 app.use("/static/", express.static("assets"));
