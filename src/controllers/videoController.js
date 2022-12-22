@@ -15,8 +15,6 @@ export const watch = async (req,res) => {
 
     const {id} = req.params;
     const video = await Video.findById(id).populate("owner").populate("comments");
-    console.log(video);
-    console.log(video);
     if(video === null){
         return res.status(404).render("404", {pageTitle: "video not found"});
     }
@@ -165,7 +163,36 @@ export const removeComment =async(req,res) => {
     if(!video){
         return res.sendStatus(404);
     }
+
+    video.comments.splice(video.comments.indexOf(commentId), 1);
+    await video.save();
+
     await Comment.findByIdAndDelete(commentId);
-    
     return res.sendStatus(200);
+}
+
+export const editComment =async(req,res) => {
+    const {
+        session: {
+            user: {_id},
+        },
+        params: {commentId},
+        body: {text},
+    } = req;
+
+    const comment = await Comment.findById(commentId).populate("owner");
+
+    if(String(_id) !== String(comment.owner._id)){
+        return res.sendStatus(404);
+    }
+    await Comment.findByIdAndUpdate(commentId, {
+        text,
+    });
+
+    return res.sendStatus(200);
+    
+    
+
+    
+    
 }

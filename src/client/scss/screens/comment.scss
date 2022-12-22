@@ -1,0 +1,105 @@
+.video__comments {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .comment__box {
+        display: flex;
+
+        .video__comment{
+            display: flex;
+            flex-direction: row;
+            height:4vh;
+            background-color: $bg;
+            .fas.fa-comment {
+                display: flex;
+                align-items: center;
+
+            }
+            .comments{
+                display: flex;
+                width: 50vw;
+                align-items: center;    
+                color: white;       
+                border-bottom:1px solid white ;     
+                
+            }
+
+          
+        }
+    }
+  
+    
+    
+    .title__img {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+        margin-bottom: 40px;
+    }
+
+    .comment__text {
+        display: flex;
+        width: 55vw;
+        outline: none;
+        position: relative;
+        border-radius: 10px;
+        align-items: center;
+        background-color: black;
+        color: white;
+        
+    }
+    .video__buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+        button {
+            width: 50px;
+            height: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 0px;
+        }
+
+        .getblue{
+            background-color: $red;
+            color: white;
+        }
+        
+    }
+  
+}
+
+#remove {
+    display: flex;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: $red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+#formatTime{
+    margin-left: 15px;
+    font-size:12px;
+    opacity: 0.7;
+}
+
+#edit{
+    display: flex;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}

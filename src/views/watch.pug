@@ -16,20 +16,8 @@ block content
                 input(type="range", step="1",value="0",  min="0")#timeline
             div   
                 button#fullScreen Enter Full Screen
-    if loggedIn
-        div.video__comments
-            form.video__comment-form#commentForm
-                textarea(cols="30", rows="10", placeholder="댓글을 작성하세요.")
-                button Add Comment
-    div.video__comments 
-        ul 
-            each comment in video.comments.reverse()
-                li.video__comment(data-id=comment.id)
-                    i.fas.fa-comment
-                    span #{comment.text}
-                    span ❌
 
-//-
+
     div.video__container
         span=video.hashtags
         small=video.title
@@ -45,9 +33,32 @@ block content
                 div.video__delete-btn
                     a(href=`${video.id}/delete`) Delete Video &rarr;
         div.video__sub
-            h3=video.createdAt    
+            h3#video__timeFormat=video.createdAt    
             p=video.description
+
+    if loggedIn
+        div.video__comments
+            img.title__img(src="/" + loggedInUser.avatarUrl)
+            form.video__comment-form#commentForm
+                textarea( placeholder=" 댓글을 작성하세요.").comment__text
+                div.video__buttons
+                    button.reply__comment 댓글
+    div.video__comments
+        ul 
+            each comment in video.comments.reverse()
+                div.comment__box
+                    img.title__img(src="/" + loggedInUser.avatarUrl)
+                    div.comment__box-sub
+                        span=loggedInUser.name
+                        span#formatTime #{comment.createdAt}
+                        li.video__comment(data-id=comment.id)
+                            span.comments #{comment.text}
+                            if String(loggedInUser._id) === String(comment.owner._id)
+                                span#remove 삭제
+                                span#edit 편집
+                            
 block scripts
     script(src="/static/js/videoPlayer.js")
+    script(src="/static/js/moment.js")
     if loggedIn
         script(src="/static/js/commentSection.js") 
