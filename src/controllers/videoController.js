@@ -40,11 +40,12 @@ export const postEdit = async(req,res) => {
         user: {_id}
     } = req.session;
     const {title,description,hashtags } = req.body;
-    const video = await Video.exists({_id:id});
+    const video = await Video.findById(id);
+    
     if(video === null){
         return res.render("404", {pageTitle: "video not fount"});
     }
-    if(String(video.owner) !== String(_id) ){
+    if(String(video.owner) !== String(_id)){
         return res.status(403).redirect("/");
     }
     await Video.findByIdAndUpdate(id, {
@@ -90,10 +91,14 @@ export const deleteVideo = async (req,res) => {
         user: {_id}
     } = req.session;
     const video = await Video.findById(id);
+    
+
+    console.log("what is the video owner looks like",video.owner); //obj
+    console.log("what is wrong with user id", _id); // String
     if(!video){
         return res.status(404).render("404", {pageTitle: "video not found"});
     }
-    if(String(video.owner !== String(_id))){
+    if(String(video.owner) !== String(_id)){
         return res.status(403).redirect("/");
     }
     await Video.findByIdAndDelete(id);

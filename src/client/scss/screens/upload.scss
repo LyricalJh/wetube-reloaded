@@ -26,3 +26,63 @@
     
     
 }
+
+.recorder__view {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .form__border {
+        padding: 40px 10px;
+        border: 1px solid $red;
+        border-radius: 10px;
+        
+    }
+    .first__input {
+        margin-bottom: 30px;
+    }
+
+    .video__tag{
+        position: absolute;
+        left: 80px;
+        bottom: 420px;
+    }
+    .thum__tag {
+        position: absolute;
+        left: 80px;
+        bottom: 330px;
+
+    }
+
+    .recorder__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .hitBtn {
+            background-color: $red;
+            text-align: center;
+        }
+        
+
+    }
+    .startBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        
+        #startBtn{
+            width: 100px;
+            height: 30px;
+            background-color: $red;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            font-size: 20px;
+            
+        }
+    }
+
+}

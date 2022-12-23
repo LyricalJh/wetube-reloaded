@@ -89,10 +89,10 @@ const removeComment = async (event) => {
 
 
 const editComment = (event) => {
-    const textValue = event.target.parentElement.firstChild.innerText;
+    
     const commnet = event.target.parentElement.firstChild;
     commnet.contentEditable = true;
-    event.target.innerText = "저장";
+    
 
     event.target.removeEventListener("click", editComment);
     event.target.addEventListener("click", saveComment);
@@ -104,6 +104,7 @@ const saveComment = async(event) => {
     const commentId = event.target.parentElement.dataset.id; //get the target id
     const commnet = event.target.parentElement.firstChild;
     const text = event.target.parentElement.firstChild.innerText; 
+
     const response = await fetch(`/api/videos/${commentId}/edit`, {
         method:"POST",
         headers: {
@@ -115,6 +116,10 @@ const saveComment = async(event) => {
     if(response.status === 200){
         commnet.contentEditable = false;
         event.target.innerText = "편집";
+        window.location.reload();
+    
+        
+        
     }
     
 };

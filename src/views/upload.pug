@@ -2,19 +2,20 @@ extends base.pug
 
 
 block content
-    div
+    div.recorder__view
         video#preview
-        button#startBtn Start Recording
-    if errorMessage 
-        span=errorMessage
-    form(method="POST", enctype="multipart/form-data")
-        input(type="file", accept="video/*", required, id="video",name="video" )
-        label(for="thumb") Thumbnail
-        input(type="file", accept="image/*", required, id="thumb",name="thumb" )
-        input(name="title" placeholder="Title", required, type="text", maxlength=80)
-        input(name="description" placeholder="Description", required, type="text", minlength=20)
-        input(name="hashtags" placeholder="hashTags, separated by comma.", required, type="text")
-        input(type="submit", value="Upload video")
+        div.startBtn
+            button#startBtn 녹화시작
+        div.form__border
+            form(method="POST", enctype="multipart/form-data").recorder__form
+                label(for="video").video__tag 영상 파일
+                input(type="file", accept="video/*", required, id="video",name="video",).first__input
+                label(for="thumb").thum__tag 썸네일 파일
+                input(type="file", accept="image/*", required, id="thumb",name="thumb" )
+                input(name="title" placeholder="Title", required, type="text", maxlength=80)
+                input(name="description" placeholder="Description", required, type="text", minlength=20)
+                input(name="hashtags" placeholder="hashTags, separated by comma.", required, type="text")
+                input(type="submit", value="Upload video").hitBtn
 
 block scripts 
     script(src="/static/js/recorder.js")
