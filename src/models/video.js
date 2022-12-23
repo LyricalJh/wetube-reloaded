@@ -5,7 +5,7 @@ function getDate (){
     const date = Date.now();
     return formatDate = date.getMonth();
 }
-
+//이름 변경도 될려나,.
 
 const videoSchema = new mongoose.Schema({
     title: {type: String, required:true ,trim:true, maxLength: 80},
