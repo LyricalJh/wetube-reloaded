@@ -50,8 +50,6 @@ const S3VideoUploader = multerS3({
 })
 
 
-
-
 export const avatarUpload = multer({dest:"uploads/avatars", limits: {
     fileSize: 3000000,
 },
