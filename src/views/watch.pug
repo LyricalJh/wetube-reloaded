@@ -3,7 +3,7 @@ extends base.pug
 
 block content
     div#videoContainer(data-id=video._id)
-        video(src="/"+video.fileUrl)
+        video(src=video.fileUrl, crossorigin)
         div#videoControls.videoControls
             div#videoConrols__play
                 span#play.videoControls__playBtn 
@@ -24,7 +24,7 @@ block content
         span=video.hashtags
         small=video.title
         div.video__owner
-            img(src="/" + loggedInUser.avatarUrl)
+            img(src=loggedInUser.avatarUrl, crossorigin)
             div.video__des
                 span
                     a(href=`/users/${video.owner._id}`)=video.owner.name
@@ -40,7 +40,7 @@ block content
 
     if loggedIn
         div.video__comments
-            img.title__img(src="/" + loggedInUser.avatarUrl)
+            img.title__img(src=loggedInUser.avatarUrl, crossorigin)
             form.video__comment-form#commentForm
                 textarea( placeholder=" 댓글을 작성하세요.").comment__text
                 div.video__buttons
@@ -49,7 +49,7 @@ block content
         ul 
             each comment in video.comments.reverse()
                 div.comment__box
-                    img.title__img(src="/" + loggedInUser.avatarUrl)
+                    img.title__img(src=loggedInUser.avatarUrl, crossorigin)
                     div.comment__box-sub
                         span=loggedInUser.name
                         span#formatTime #{comment.createdAt}
