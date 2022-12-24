@@ -32,11 +32,17 @@ export const pulicOnlyMiddleware = (req,res,next) => {
         return res.redirect("/");
     }
 }
-const multerUploader = multerS3({
+const S3ImageUploader = multerS3({
     s3:s3,
-    bucket: 'wetube-junghan',
+    bucket: 'wetube-junghan/images',
     acl: 'public-read',
 });
+
+const S3VideoUploader = multerS3({
+    s3:s3,
+    bucket: 'wetube-junghan/videos',
+    acl: 'public-read',
+})
 
 
 
@@ -44,11 +50,11 @@ const multerUploader = multerS3({
 export const avatarUpload = multer({dest:"uploads/avatars", limits: {
     fileSize: 3000000,
 },
-storage :multerUploader,
+storage :S3ImageUploader,
 });
 
 export const videoUpload = multer({dest: "uploads/videos", limits: {
     fileSize: 1000000000000,
 },
-storage :multerUploader,
+storage :S3VideoUploader,
 });
