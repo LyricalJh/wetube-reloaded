@@ -3,3 +3,8 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
 }
+
+.video-mixin__thumb {
+    background-size: cover;
+    background-position: center;
+}
