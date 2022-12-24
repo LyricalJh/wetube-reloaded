@@ -12,6 +12,7 @@ export const localMiddleware = (req,res,next) => {
     res.locals.loggedIn = Boolean(req.session.loggedIn);
     res.locals.siteName = "Wetube";
     res.locals.loggedInUser = req.session.user || {};
+    res.locals.isHeroku = isHeroku;
     next();
 }
 
@@ -32,6 +33,10 @@ export const pulicOnlyMiddleware = (req,res,next) => {
         return res.redirect("/");
     }
 }
+
+const isHeroku = process.env.NODE_ENV ==="prodcution";
+
+
 const S3ImageUploader = multerS3({
     s3:s3,
     bucket: 'wetube-junghan/images',
@@ -50,11 +55,11 @@ const S3VideoUploader = multerS3({
 export const avatarUpload = multer({dest:"uploads/avatars", limits: {
     fileSize: 3000000,
 },
-storage :S3ImageUploader,
+storage: isHeroku ? S3ImageUploader:undefined,
 });
 
 export const videoUpload = multer({dest: "uploads/videos", limits: {
     fileSize: 1000000000000,
 },
-storage :S3VideoUploader,
+storage : isHeroku ? S3VideoUploader:undefined,
 });
