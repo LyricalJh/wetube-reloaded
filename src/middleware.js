@@ -34,7 +34,7 @@ export const pulicOnlyMiddleware = (req,res,next) => {
     }
 }
 
-const isHeroku = process.env.NODE_ENV ==="prodcution";
+const isHeroku = process.env.NODE_ENV ==="production";
 
 
 const S3ImageUploader = multerS3({
